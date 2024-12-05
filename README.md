@@ -12,8 +12,9 @@ Singleton, Facade, Builder, Command
 
 ## Details
 
-This app will allow users to create a new Tamagotchi pet with custom traits such as name, fur color, favorite color, etc.
+This app will allow users to create a new Tamagotchi pet with custom traits such as name, fur color, unique trait,
+fashion accessory, and personality type.
 
 ## Software Design
 
-<abstract class> Tamagotchi
+<class> Tamagotchi

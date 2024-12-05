@@ -7,23 +7,26 @@ public class TamagotchiBuilder {
     }
 
     // building methods
-    public void buildColor(Color color) {
+    public void buildName(String name) {
+        tamagotchi.setName(name);
+    }
+
+    public void buildColor(String color) {
         tamagotchi.setColor(color);
     }
 
-    public void buildFeature(Feature feature) {
-        tamagotchi.setFeature(feature);
+    public void buildUniqueTrait(String uniqueTrait) {
+        tamagotchi.setUniqueTrait(uniqueTrait);
     }
 
-    public void buildAccessory(Accessory accessory) {
+    public void buildAccessory(String accessory) {
         tamagotchi.setAccessory(accessory);
     }
 
-    public void buildPersonality(Personality personality) {
+    public void buildPersonality(String personality) {
         tamagotchi.setPersonality(personality);
     }
 
-    // get the wedding package that was just built
     public Tamagotchi getTamagotchi() {
         return this.tamagotchi;
     }
