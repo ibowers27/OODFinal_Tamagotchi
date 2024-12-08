@@ -5,23 +5,24 @@ public class Tamagotchi {
 	private String accessory;
 	private String personality;
 
-	void setName(String name) {
+	// Setters
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	void setColor(String color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 
-	void setUniqueTrait(String uniqueTrait) {
+	public void setUniqueTrait(String uniqueTrait) {
 		this.uniqueTrait = uniqueTrait;
 	}
 
-	void setAccessory(String accessory) {
+	public void setAccessory(String accessory) {
 		this.accessory = accessory;
 	}
 
-	void setPersonality(String personality) {
+	public void setPersonality(String personality) {
 		this.personality = personality;
 	}
 
