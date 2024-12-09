@@ -1,5 +1,5 @@
-# OOD_Tamagotchi
- Object Oriented Design final project
+# OODFinal_Tamagotchi
+ Object-Oriented Design final project
 
  Group: Kitty Kats
  - Daniel Messiana
@@ -8,7 +8,7 @@
 
 ## Design Patterns
 
-Singleton, Facade, Builder, Command
+Singleton, Builder, Command, Observer
 
 ## Details
 

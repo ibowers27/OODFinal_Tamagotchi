@@ -1,8 +1,11 @@
-public class BirdTamagotchiBuilder implements TamagotchiBuilder {
+/** Ivy Bowers
+ *
+ */
+public class BunnyTamagotchiBuilder implements TamagotchiBuilder {
     private Tamagotchi tamagotchi;
 
     // constructor for connecting the builder with the tamagotchi
-    public BirdTamagotchiBuilder() {
+    public BunnyTamagotchiBuilder() {
         this.tamagotchi = new Tamagotchi();
     }
 

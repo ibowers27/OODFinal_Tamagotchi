@@ -1,4 +1,6 @@
-// builder interface
+/** Ivy Bowers
+ * This is the builder interface.
+ */
 public interface TamagotchiBuilder {
     void buildName(String name);
 	void buildColor(String Color);

@@ -1,8 +1,8 @@
 public class FeedCommand implements Command {
     @Override
-    public void execute(Tamagotchi tamagotchi) {
-        tamagotchi.modifyHunger(20);
-        tamagotchi.modifyHealth(10);
-        tamagotchi.modifyHappiness(5);
+    public void execute(TamagotchiStats tamagotchiStats) {
+        tamagotchiStats.modifyHunger(20);
+        tamagotchiStats.modifyHealth(10);
+        tamagotchiStats.modifyHappiness(5);
     }
 }

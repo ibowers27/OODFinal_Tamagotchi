@@ -1,3 +1,6 @@
+/** Ivy Bowers
+ * This is the director for the builder.
+ */
 public class TamagotchiDirector {
     private TamagotchiBuilder builder;
 
