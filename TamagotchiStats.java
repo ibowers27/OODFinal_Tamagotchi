@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Subject (Observable)
+/** Angelo Morelli, Daniel Messiana, Ivy Bowers
+ * Tamagatchi class created to manage the tamagatchi's stats like health, hunger, cleanliness, entertainment, and happiness.
+ * This also acts as the Subject (Observable) for the observer and holds functions for the commands that are affecting the
+ * statistics.
  */
 public class TamagotchiStats {
     private List<Observer> observers;  // List of observers
