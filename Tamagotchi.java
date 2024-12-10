@@ -10,6 +10,27 @@ public class Tamagotchi {
 	private String accessory;
 	private String personality;
 
+	// Getters
+	public String getName() {
+		return name;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public String getUniqueTrait() {
+		return uniqueTrait;
+	}
+
+	public String getAccessory() {
+		return accessory;
+	}
+
+	public String getPersonality() {
+		return personality;
+	}
+
 	// Setters
 	public void setName(String name) {
 		this.name = name;
@@ -31,7 +52,7 @@ public class Tamagotchi {
 		this.personality = personality;
 	}
 
-	public String toString(){
+	public String toString() {
 		return "Tamagotchi: " +
 				"\nName: " + name +
 				"\nColor: " + color +

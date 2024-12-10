@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,47 +23,40 @@ public class GUIController implements ActionListener {
             String accessory = creationView.getAccessory();
             String personality = creationView.getPersonality();
 
-            // Display the submitted information on a new page (Creating a DisplayFormView object)
-            new GameView(type, name, color, uniqueTrait, accessory, personality);
-            creationView.setVisible(false);  // Hide the intake form
+            // Choose the builder based on the type
+            TamagotchiBuilder builder;
+            switch (type) {
+                case "Cat":
+                    builder = new CatTamagotchiBuilder();
+                    break;
+                case "Dog":
+                    builder = new DogTamagotchiBuilder();
+                    break;
+                case "Bunny":
+                    builder = new BunnyTamagotchiBuilder();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unknown Tamagotchi type: " + type);
+            }
+
+            // Ensure the user input values for the Tamagotchi description
+            if (name.isEmpty() || uniqueTrait.isEmpty() || accessory.isEmpty() || personality.isEmpty()) {
+                JOptionPane.showMessageDialog(creationView,
+                        "All fields must be filled out before submitting.",
+                        "Input Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+
+                // Create director and construct the user's customized Tamagotchi
+                TamagotchiDirector tamagotchiDirector = new TamagotchiDirector(builder);
+
+                // This is the customized Tamagotchi from; returns getTamagotchi()
+                Tamagotchi tamagotchi = tamagotchiDirector.constructTamagotchi(name, color, uniqueTrait, accessory, personality);
+
+                // Display the constructed tamagotchi's information on a new page
+                new GameView(tamagotchi, type);
+
+                creationView.setVisible(false);  // Hide the intake form (first page)
+            }
         }
-        //// Event listener for the submit button
-        //        submitButton.addActionListener(e ->
-        //
-        //    {
-        //        // Get values from the input fields
-        //        String name = nameField.getText();
-        //        String color = (String) tamagotchiColorComboBox.getSelectedItem();
-        //        String uniqueTrait = uniqueTraitField.getText();
-        //        String accessory = accessoryField.getText();
-        //        String personality = personalityField.getText();
-        //
-        //        // Get the selected Tamagotchi type from the combo box
-        //        String selectedType = (String) tamagotchiTypeComboBox.getSelectedItem();
-        //        TamagotchiBuilder builder;
-        //
-        //        // Based on user selection, choose the appropriate builder
-        //        switch (selectedType) {
-        //            case "Cat":
-        //                builder = new CatTamagotchiBuilder();
-        //                break;
-        //            case "Dog":
-        //                builder = new DogTamagotchiBuilder();
-        //                break;
-        //            case "Bunny":
-        //                builder = new BunnyTamagotchiBuilder();
-        //                break;
-        //            default:
-        //                builder = new CatTamagotchiBuilder(); // Default to Cat (or handle error)
-        //                break;
-        //        }
-        //
-        //        // Create the director and use it to construct the Tamagotchi
-        //        TamagotchiDirector director = new TamagotchiDirector(builder);
-        //        Tamagotchi tamagotchi = director.constructTamagotchi(name, color, uniqueTrait, accessory, personality);
-        //
-        //        // Print the created Tamagotchi (or update the UI with the result)
-        //        System.out.println(tamagotchi);
-        // });
     }
 }
