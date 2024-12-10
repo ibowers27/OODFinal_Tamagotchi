@@ -3,9 +3,9 @@
  *
  * There can only be one instance of the Game class
  *
- * The user will begin by creating a unique Tamagotchi pet, stored in
- * the Tamagotchi playerPet variable. After the Tamagotchi pet is stored
- * there cannot be another Tamagotchi pet class
+ * The user will begin by creating a unique Tamagotchi pet, 
+ * which will be stored in the playerPet variable. 
+ * It is ensured there will only be one Tamagotchi per game instance.
 */
 
 public class Game {
