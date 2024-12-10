@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 
+/** Ivy Bowers
+ *  This is the first page of our UI that acts as an input form to use for Tamagotchi creation and customization which
+ *  will use the builder methods.
+ */
 public class TamagotchiCreationView extends JFrame {
     // Create labels for type, name, color, unique trait, accessory, and personality
     private JLabel typeLabel, nameLabel, colorLabel, uniqueTraitLabel, accessoryLabel, personalityLabel;
@@ -14,6 +18,7 @@ public class TamagotchiCreationView extends JFrame {
     // Create comboboxes for type and color
     private JComboBox<String> typeComboBox, colorComboBox;
 
+    // Constructor
     public TamagotchiCreationView() {
         super("Create Your Tamagotchi");
 
@@ -37,6 +42,7 @@ public class TamagotchiCreationView extends JFrame {
 
     }
 
+    // Input form panel
     public JPanel inputForm() {
         JPanel panel = new JPanel();
 
@@ -46,7 +52,7 @@ public class TamagotchiCreationView extends JFrame {
         // ComboBox for selecting Tamagotchi type
         String[] typeOptions = {"Cat", "Dog", "Bunny"};
         typeComboBox = new JComboBox<>(typeOptions);
-        typeComboBox.setPreferredSize(new Dimension(150, 25));
+        typeComboBox.setPreferredSize(new Dimension(150, 25)); // Set preferred size for tamagotchi type dropdown
         typePanel.add(typeLabel);
         typePanel.add(typeComboBox);
 
@@ -64,7 +70,7 @@ public class TamagotchiCreationView extends JFrame {
         // ComboBox for selecting color
         String[] colorOptions = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink"};
         colorComboBox = new JComboBox<>(colorOptions);
-        colorComboBox.setPreferredSize(new Dimension(150, 25));
+        colorComboBox.setPreferredSize(new Dimension(150, 25)); // Set preferred size for color dropdown
         colorPanel.add(colorLabel);
         colorPanel.add(colorComboBox);
 
@@ -88,11 +94,11 @@ public class TamagotchiCreationView extends JFrame {
         JPanel personalityPanel = new JPanel(new GridLayout(1, 2));
         personalityLabel = new JLabel("Personality:");
         personalityTextArea = new JTextArea();
-        personalityTextArea.setPreferredSize(new Dimension(150, 25)); // Set preferred size for name field
+        personalityTextArea.setPreferredSize(new Dimension(150, 25)); // Set preferred size for personality field
         personalityPanel.add(personalityLabel);
         personalityPanel.add(personalityTextArea);
 
-        // Button to submit the form
+        // Button to create the tamagotchi (submit input form)
         JPanel submitButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         submitButton = new JButton("Create Tamagotchi");
         submitButtonPanel.add(submitButton);

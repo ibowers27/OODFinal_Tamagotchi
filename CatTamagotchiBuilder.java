@@ -1,12 +1,15 @@
+/** Ivy Bowers
+ *  This is a concrete builder implementing the TamagotchiBuilder interface.
+ */
 public class CatTamagotchiBuilder implements TamagotchiBuilder {
     private Tamagotchi tamagotchi;
 
-    // constructor for connecting the builder with the tamagotchi
+    // Constructor for connecting the builder with the tamagotchi
     public CatTamagotchiBuilder() {
         this.tamagotchi = new Tamagotchi();
     }
 
-    // building methods
+    // Building methods
     @Override
     public void buildName(String name) {
         tamagotchi.setName(name);
