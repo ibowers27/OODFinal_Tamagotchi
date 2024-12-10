@@ -6,6 +6,9 @@
  - Angelo Morelli
  - Ivy Bowers
 
+## Youtube Link
+
+
 ## Design Patterns
 
 Singleton, Builder, Command, Observer
@@ -17,4 +20,3 @@ fashion accessory, and personality type.
 
 ## Software Design
 
-<class> Tamagotchi
