@@ -1,27 +1,33 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/** Ivy Bowers
+ *  This is the second page of our UI that acts as the "game."
+ */
 public class GameView extends JFrame {
     private Tamagotchi tamagotchi;
     private String petType;
+    private TamagotchiStats tamagotchiStats;
 
     // Constructor
-    public GameView(Tamagotchi tamagotchi, String petType) {
+    public GameView(Tamagotchi tamagotchi, String petType, TamagotchiStats tamagotchiStats) {
         super("Tamagotchi Game");
 
         this.tamagotchi = tamagotchi;
         this.petType = petType;
+        this.tamagotchiStats = tamagotchiStats;
 
         // Window features
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(600, 450));
+        setPreferredSize(new Dimension(600, 500));
         setResizable(true);
 
         // Create panel
         JPanel panel = new JPanel();
         panel.setBorder(new EmptyBorder(10, 10, 10,10));
-        panel.setLayout(new GridLayout(1, 2));  // 1 row, 2 columns
+        panel.setLayout(new GridLayout(4, 2));  // 1 row, 2 columns
 
         // Create left panel for Tamagotchi description
         JPanel descriptionPanel = new JPanel();
@@ -63,11 +69,82 @@ public class GameView extends JFrame {
         panel.add(descriptionPanel);  // Add description panel to the left (column 1)
         panel.add(imagePanel);  // Add image panel to the right (column 2)
 
+        // Create a panel for the happiness bar
+        JPanel happinessPanel = new JPanel();
+
+        // Add a bar for happiness
+        JProgressBar happinessBar = new JProgressBar(0, 100);
+        happinessBar.setValue(tamagotchiStats.getHappiness());
+        happinessBar.setPreferredSize(new Dimension(100,10));
+        happinessPanel.add(new JLabel("Happiness: "));
+        happinessPanel.add(happinessBar);
+
+        panel.add(happinessPanel);
+
+        // Create a blank panel for padding
+        JPanel blankPanel = new JPanel();
+
+        JLabel blankLabel = new JLabel("");
+
+        blankPanel.add(blankLabel);
+
+        panel.add(blankPanel);
+
+        // Add stats labels (Cleanliness, Health, Hunger, Entertainment)
+        JPanel statsPanelLeft = new JPanel();
+        statsPanelLeft.setLayout(new GridLayout(1, 2));
+
+        JPanel statsPanelRight = new JPanel();
+        statsPanelRight.setLayout(new GridLayout(1, 2));
+
+        JLabel healthLabel = new JLabel("Health: " + tamagotchiStats.getHealth() + "/100");
+        JLabel hungerLabel = new JLabel("Hunger: " + tamagotchiStats.getHunger() + "/100");
+        JLabel cleanlinessLabel = new JLabel("Cleanliness: " + tamagotchiStats.getCleanliness() + "/100");
+        JLabel entertainmentLabel = new JLabel("Entertainment: " + tamagotchiStats.getEntertainment() + "/100");
+
+        statsPanelLeft.add(healthLabel);
+        statsPanelLeft.add(hungerLabel);
+        statsPanelRight.add(cleanlinessLabel);
+        statsPanelRight.add(entertainmentLabel);
+
+        panel.add(statsPanelLeft);
+        panel.add(statsPanelRight);
+
+        // Create a left panel for the buttons
+        JPanel buttonPanelLeft = new JPanel();
+        buttonPanelLeft.setLayout(new GridLayout(1, 2));
+
+        // Create a right panel for the buttons
+        JPanel buttonPanelRight = new JPanel();
+        buttonPanelRight.setLayout(new GridLayout(1, 2));
+
+        // Buttons for interacting with the Tamagotchi
+        JButton cleanButton = new JButton("Clean");
+        JButton healButton = new JButton("Heal");
+        JButton feedButton = new JButton("Feed");
+        JButton playButton = new JButton("Play");
+
+        // Add action listeners (could be implemented later)
+        cleanButton.addActionListener(e -> System.out.println("Clean button pressed"));
+        healButton.addActionListener(e -> System.out.println("Heal button pressed"));
+        feedButton.addActionListener(e -> System.out.println("Feed button pressed"));
+        playButton.addActionListener(e -> System.out.println("Play button pressed"));
+
+        // Add buttons to button panel
+        buttonPanelLeft.add(cleanButton);
+        buttonPanelLeft.add(healButton);
+        buttonPanelRight.add(feedButton);
+        buttonPanelRight.add(playButton);
+
+        panel.add(buttonPanelLeft);
+        panel.add(buttonPanelRight);
+
         // Add main panel
         add(panel);
 
         // Display the window
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

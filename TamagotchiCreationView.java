@@ -35,6 +35,7 @@ public class TamagotchiCreationView extends JFrame {
 
         //Display the window
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
         // Add action listeners for submit

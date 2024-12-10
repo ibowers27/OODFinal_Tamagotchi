@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** Ivy Bowers
+ *  This is the controller for our UI. It handles passing values from the first page to the second and implements builder
+ *  logic.
+ */
 public class GUIController implements ActionListener {
     private TamagotchiCreationView creationView;
 
@@ -52,8 +56,11 @@ public class GUIController implements ActionListener {
                 // This is the customized Tamagotchi from; returns getTamagotchi()
                 Tamagotchi tamagotchi = tamagotchiDirector.constructTamagotchi(name, color, uniqueTrait, accessory, personality);
 
+                // Create the TamagotchiStats object
+                TamagotchiStats tamagotchiStats = new TamagotchiStats();
+
                 // Display the constructed tamagotchi's information on a new page
-                new GameView(tamagotchi, type);
+                new GameView(tamagotchi, type, tamagotchiStats);
 
                 creationView.setVisible(false);  // Hide the intake form (first page)
             }
