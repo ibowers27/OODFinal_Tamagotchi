@@ -42,6 +42,7 @@ public class TamagotchiStats {
         }
     }
 
+    // Angelo - part of command class implementation alongside Observer
     // each modifyN class takes a value as a parameter then uses Math.max to ensure
     // the value isn't under 0, then Math.min to ensure the value isn't over 100,
     // then notifies the observers.

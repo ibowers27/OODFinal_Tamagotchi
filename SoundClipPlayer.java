@@ -3,9 +3,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-public class SoundClipPlayer implements SoundClip {
-    // for storing all sound clips with their names for simple retrieval
+// Angelo
+// SoundClipPlayer to handle all sound playback concerns, implementing the java sound library's clip functionality
+public class SoundClipPlayer {
+    // hashmap for storing all sound clips with their names for simple retrieval
     private final Map<String, Clip> clips = new HashMap<>();
     // base path for sound file storage + constructor to set
     private final String soundBasePath;
@@ -13,7 +14,7 @@ public class SoundClipPlayer implements SoundClip {
     public SoundClipPlayer(String soundBasePath) {
         this.soundBasePath = soundBasePath;
     }
-    @Override
+
     public void loadClip(String soundName, String filePath) {
         try {
             // create full path for file retrieval
@@ -33,7 +34,6 @@ public class SoundClipPlayer implements SoundClip {
         }
     }
 
-    @Override
     public void playClip(String soundName) {
         // find clip in the hashmap
         Clip clip = clips.get(soundName);
@@ -48,7 +48,7 @@ public class SoundClipPlayer implements SoundClip {
             System.err.println("Sound clip " + soundName + " not found.");
         }
     }
-    @Override
+
     public void stopClip(String soundName) {
         // find clip in the hashmap
         Clip clip = clips.get(soundName);
@@ -59,7 +59,6 @@ public class SoundClipPlayer implements SoundClip {
         }
     }
 
-    @Override
     public void setVolume(float volume) {
         // ensure volume isn't below 0 or above 1
         volume = Math.max(0.0f, Math.min(1.0f, volume));

@@ -1,3 +1,5 @@
+// Angelo
+// Command pattern subclass handling the feeding function for the tamagotchi, and modifying corresponding stats
 public class FeedCommand implements Command {
     @Override
     public void execute(TamagotchiStats tamagotchiStats) {
