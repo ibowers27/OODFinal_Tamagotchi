@@ -1,15 +1,21 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-/** Ivy Bowers
- *  This is the second page of our UI that acts as the "game."
+/** Ivy Bowers, Angelo Morelli
+ *  This is the second page of our UI that acts as the "game." This is where commands, observers, and sounds are handled.
  */
 public class GameView extends JFrame {
     private Tamagotchi tamagotchi;
     private String petType;
     private TamagotchiStats tamagotchiStats;
+
+    // Observed UI components
+    private JLabel healthLabel;
+    private JLabel hungerLabel;
+    private JLabel cleanlinessLabel;
+    private JLabel entertainmentLabel;
+    private JProgressBar happinessBar;
 
     // Constructor
     public GameView(Tamagotchi tamagotchi, String petType, TamagotchiStats tamagotchiStats) {
@@ -18,6 +24,25 @@ public class GameView extends JFrame {
         this.tamagotchi = tamagotchi;
         this.petType = petType;
         this.tamagotchiStats = tamagotchiStats;
+
+        // Initialize UI components that will be affected by command buttons
+        healthLabel = new JLabel("Health: " + tamagotchiStats.getHealth() + "/100");
+        hungerLabel = new JLabel("Hunger: " + tamagotchiStats.getHunger() + "/100");
+        cleanlinessLabel = new JLabel("Cleanliness: " + tamagotchiStats.getCleanliness() + "/100");
+        entertainmentLabel = new JLabel("Entertainment: " + tamagotchiStats.getEntertainment() + "/100");
+        happinessBar = new JProgressBar(0, 100);
+        happinessBar.setValue(tamagotchiStats.getHappiness());
+
+        // Register the observer with tamagotchiStats (Observable) and the UI details
+        new TamagotchiStatsObserver(tamagotchiStats, healthLabel, hungerLabel, cleanlinessLabel, entertainmentLabel, happinessBar);
+
+
+        // Instantiate SoundClipPlayer instance and load sound clips
+        SoundClipPlayer player = new SoundClipPlayer("out/resources");
+        player.loadClip("sleep", "kb_sleepingcat_short-36741.wav");
+        player.loadClip("heal", "health-pickup-6860.wav");
+        player.loadClip("eat", "eating-sound-effect-36186.wav");
+        player.loadClip("play", "boing-spring-mouth-harp-04-20-13-4-103346.wav");
 
         // Window features
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +72,6 @@ public class GameView extends JFrame {
         imagePanel.setLayout(new BorderLayout());
 
         // Set image based on pet type
-        // Set the image based on the pet type using a switch case
         ImageIcon petImage = null;
         switch (petType.toLowerCase()) {
             case "cat":
@@ -71,10 +95,6 @@ public class GameView extends JFrame {
 
         // Create a panel for the happiness bar
         JPanel happinessPanel = new JPanel();
-
-        // Add a bar for happiness
-        JProgressBar happinessBar = new JProgressBar(0, 100);
-        happinessBar.setValue(tamagotchiStats.getHappiness());
         happinessBar.setPreferredSize(new Dimension(100,10));
         happinessPanel.add(new JLabel("Happiness: "));
         happinessPanel.add(happinessBar);
@@ -96,11 +116,6 @@ public class GameView extends JFrame {
 
         JPanel statsPanelRight = new JPanel();
         statsPanelRight.setLayout(new GridLayout(1, 2));
-
-        JLabel healthLabel = new JLabel("Health: " + tamagotchiStats.getHealth() + "/100");
-        JLabel hungerLabel = new JLabel("Hunger: " + tamagotchiStats.getHunger() + "/100");
-        JLabel cleanlinessLabel = new JLabel("Cleanliness: " + tamagotchiStats.getCleanliness() + "/100");
-        JLabel entertainmentLabel = new JLabel("Entertainment: " + tamagotchiStats.getEntertainment() + "/100");
 
         statsPanelLeft.add(healthLabel);
         statsPanelLeft.add(hungerLabel);
@@ -124,11 +139,34 @@ public class GameView extends JFrame {
         JButton feedButton = new JButton("Feed");
         JButton playButton = new JButton("Play");
 
-        // Add action listeners (could be implemented later)
-        cleanButton.addActionListener(e -> System.out.println("Clean button pressed"));
-        healButton.addActionListener(e -> System.out.println("Heal button pressed"));
-        feedButton.addActionListener(e -> System.out.println("Feed button pressed"));
-        playButton.addActionListener(e -> System.out.println("Play button pressed"));
+        // Add action listeners for each button that connects to commands and executes
+        cleanButton.addActionListener(e -> {
+            System.out.println("Clean button pressed");
+            Command cleanCommand = new CleanCommand();
+            cleanCommand.execute(tamagotchiStats);
+            player.playClip("sleep");
+        });
+
+        healButton.addActionListener(e -> {
+            System.out.println("Heal button pressed");
+            Command healCommand = new HealCommand();
+            healCommand.execute(tamagotchiStats);
+            player.playClip("heal");
+        });
+
+        feedButton.addActionListener(e -> {
+            System.out.println("Feed button pressed");
+            Command feedCommand = new FeedCommand();
+            feedCommand.execute(tamagotchiStats);
+            player.playClip("eat");
+        });
+
+        playButton.addActionListener(e -> {
+            System.out.println("Play button pressed");
+            Command playCommand = new PlayCommand();
+            playCommand.execute(tamagotchiStats);
+            player.playClip("play");
+        });
 
         // Add buttons to button panel
         buttonPanelLeft.add(cleanButton);
