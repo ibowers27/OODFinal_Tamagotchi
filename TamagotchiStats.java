@@ -66,4 +66,27 @@ public class TamagotchiStats {
         happiness = Math.max(0, Math.min(100, happiness + changeInValue));
         notifyObservers();
     }
+
+
+    // Getters
+    public int getHealth() {
+        return health;
+    }
+
+    public int getHunger() {
+        return hunger;
+    }
+
+    public int getCleanliness() {
+        return cleanliness;
+    }
+
+    public int getEntertainment() {
+        return entertainment;
+    }
+
+    public int getHappiness() {
+        return happiness;
+    }
+
 }
