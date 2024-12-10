@@ -1,4 +1,4 @@
-/** Daniel Messiana
+/** Daniel Messiana, Ivy Bowers
  * Observer interface
  * Concrete observers share the common observer interface
  * with the update method.

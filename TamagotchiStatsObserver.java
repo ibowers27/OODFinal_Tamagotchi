@@ -1,3 +1,10 @@
+/* Daniel Messiana, Ivy Bowers
+ * 
+ * This class observes the attributes of the Tamagotchi 
+ * and updates the UI accordingly.
+ * 
+*/
+
 public class TamagotchiStatsObserver implements Observer {
     private TamagotchiStats tamagotchiStats;
 

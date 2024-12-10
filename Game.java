@@ -43,9 +43,4 @@ public class Game {
 		return playerPet;
 	}
 
-	public static start() {
-		while (true) {
-
-		}
-	}
 }
