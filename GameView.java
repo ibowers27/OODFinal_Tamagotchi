@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.Random;
 
 /** Ivy Bowers, Angelo Morelli
  *  This is the second page of our UI that acts as the "game." This is where commands, observers, and sounds are handled.
@@ -180,6 +181,14 @@ public class GameView extends JFrame {
         // Add main panel
         add(panel);
 
+        // Timer 
+        Timer timer = new Timer(10000, e -> ) {
+            if (random.nextInt(101) < 40) {
+                tamagotchiStats.decreaseHunger(10);
+            }
+        }
+        timer.start();
+
         // Display the window
         pack();
         setLocationRelativeTo(null);
@@ -204,4 +213,5 @@ public class GameView extends JFrame {
                 return "Unknown";
         }
     }
+
 }

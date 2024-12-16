@@ -48,24 +48,44 @@ public class TamagotchiStats {
     // each modifyN class takes a value as a parameter then uses Math.max to ensure
     // the value isn't under 0, then Math.min to ensure the value isn't over 100,
     // then notifies the observers.
-    public void modifyHealth(int changeInValue) {
+    public void increaseHealth(int changeInValue) {
         health = Math.max(0, Math.min(100, health + changeInValue));
         notifyObservers();
     }
-    public void modifyHunger(int changeInValue) {
+    public void decreaseHealth(int changeInValue) {
+        health = Math.max(0, Math.min(100, health - changeInValue));
+        notifyObservers();
+    }
+    public void increaseHunger(int changeInValue) {
         hunger = Math.max(0, Math.min(100, hunger + changeInValue));
         notifyObservers();
     }
-    public void modifyCleanliness(int changeInValue) {
+    public void decreaseHunger(int changeInValue) {
+        hunger = Math.max(0, Math.min(100, hunger - changeInValue));
+        notifyObservers();
+    }
+    public void increaseCleanliness(int changeInValue) {
         cleanliness = Math.max(0, Math.min(100, cleanliness + changeInValue));
         notifyObservers();
     }
-    public void modifyEntertainment(int changeInValue) {
+    public void decreaseCleanliness(int changeInValue) {
+        cleanliness = Math.max(0, Math.min(100, cleanliness - changeInValue));
+        notifyObservers();
+    }
+    public void increaseEntertainment(int changeInValue) {
         entertainment = Math.max(0, Math.min(100, entertainment + changeInValue));
         notifyObservers();
     }
-    public void modifyHappiness(int changeInValue) {
+    public void decreaseEntertainment(int changeInValue) {
+        entertainment = Math.max(0, Math.min(100, entertainment -changeInValue));
+        notifyObservers();
+    }
+    public void increaseHappiness(int changeInValue) {
         happiness = Math.max(0, Math.min(100, happiness + changeInValue));
+        notifyObservers();
+    }
+    public void decreaseHappiness(int changeInValue) {
+        happiness = Math.max(0, Math.min(100, happiness - changeInValue));
         notifyObservers();
     }
 
