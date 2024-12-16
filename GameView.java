@@ -10,6 +10,7 @@ public class GameView extends JFrame {
     private Tamagotchi tamagotchi;
     private String petType;
     private TamagotchiStats tamagotchiStats;
+    private Random random = new Random();
 
     // Observed UI components
     private JLabel healthLabel;
@@ -181,12 +182,17 @@ public class GameView extends JFrame {
         // Add main panel
         add(panel);
 
-        // Timer 
-        Timer timer = new Timer(10000, e -> ) {
+        // Timer for a decrease every 5 seconds
+        Timer timer = new Timer(5000, e -> {
+            // Hunger decreases by 10 at a 40% chance
             if (random.nextInt(101) < 40) {
                 tamagotchiStats.decreaseHunger(10);
             }
-        }
+            // Happiness decreases by 5 at a 20% chance
+            if (random.nextInt(101) < 20) {
+                tamagotchiStats.decreaseHappiness(5);
+            }
+        });
         timer.start();
 
         // Display the window

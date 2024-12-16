@@ -2,6 +2,8 @@ import java.util.Random;
 // Angelo and Daniel
 // Command pattern subclass handling the playing function for the tamagotchi, and modifying corresponding stats
 public class PlayCommand implements Command {
+    private Random random = new Random();
+    
     @Override
     public void execute(TamagotchiStats tamagotchiStats) {
         tamagotchiStats.increaseEntertainment(20);

@@ -3,7 +3,7 @@
 public class HealCommand implements Command {
     @Override
     public void execute(TamagotchiStats tamagotchiStats) {
-        tamagotchiStats.modifyHealth(20);
-        tamagotchiStats.modifyHappiness(5);
+        tamagotchiStats.increaseHealth(20);
+        tamagotchiStats.increaseHappiness(5);
     }
 }
