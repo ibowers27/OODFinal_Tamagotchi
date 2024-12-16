@@ -192,6 +192,13 @@ public class GameView extends JFrame {
             if (random.nextInt(101) < 20) {
                 tamagotchiStats.decreaseHappiness(5);
             }
+            // If health reaches 0 the game is over.
+            if (tamagotchiStats.getHealth() <= 0){
+                System.out.println("Game Over! Your Tamagotchi was not taken care of responsibly.");
+                JOptionPane.showMessageDialog(this, "Game Over!  You lose", "Game Over", JOptionPane.ERROR_MESSAGE);
+                ((Timer) e.getSource()).stop();
+                dispose();
+            }
         });
         timer.start();
 
